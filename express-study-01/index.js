@@ -3,7 +3,7 @@
   var app = express();
   var bodyParser = require('body-parser');
   var formidable = require('formidable');
-
+  var credentials = require('./credentials');
 
   var hbs = exphbs.create({
     defaultLayout:'main',
@@ -26,6 +26,7 @@
   app.use(express.static(__dirname + '/public'));
 
   app.use(bodyParser());
+  app.use(require('cookie-parser')(credentials.cookieSerect));
   app.get('/',function (req, res) {
     res.render('home');
   })
