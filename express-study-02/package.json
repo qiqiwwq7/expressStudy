@@ -9,13 +9,8 @@
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
-<<<<<<< HEAD
     "ejs": "~2.4.1",
-    "express": "~4.13.4",
-=======
-    "express": "~4.13.4",
     "jade": "~1.11.0",
->>>>>>> 75d074802badc92149cb71288a46ce6afeafa4e3
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
   }
