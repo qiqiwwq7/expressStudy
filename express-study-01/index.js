@@ -34,15 +34,6 @@
   /// dynamically include routers
   app.use(enrouten({directory: 'routers'}));
 
-  app.post('/process-contact',function (req,res) {
-    console.log('Received contact from ' + req.body.name + ' <' + req.body.email + '>');
-    try {
-      return res.xhr ? res.render({success : true}) : res.redirect(303,'/thank-you');
-    } catch(ex){
-      return res.xhr ? res.json({ error : 'Database error.' }) : res.redirect(303,'/thank');
-    }
-  })
-
   app.get('/contest/vacation-photo', function (req, res) {
     var now = new Date();
     res.render('contest/vacation-photo', {

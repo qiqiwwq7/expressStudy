@@ -10,6 +10,15 @@ module.exports = function (router) {
     res.redirect(303,'/thank-you');
   })
 
+  router.post('/contact',function (req,res) {
+    console.log('Received contact from ' + req.body.name + ' <' + req.body.email + '>');
+    try {
+      return res.xhr ? res.render({success : true}) : res.redirect(303,'/thank-you');
+    } catch(ex){
+      return res.xhr ? res.json({ error : 'Database error.' }) : res.redirect(303,'/thank');
+    }
+  })
+
   router.post('/ajax',function (req, res) {
     if(req.xhr || req.accepts('json,html')==='json'){
       //如果发生错误，应该发送{error : 'error description'}
