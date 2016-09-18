@@ -27,8 +27,22 @@
 
   app.use(bodyParser());
   app.use(require('cookie-parser')(credentials.cookieSerect));
+
+  var _config = {
+        GLOBAL: {},
+        sidebar: {
+            links: [],
+            basePath: '',
+            baseUrl: '',
+            path: ''
+        },
+        name:'zhangsan',
+        sex:'man'
+  };
+  var newConfig = Object.create(_config);
+  console.log(newConfig);
   app.get('/',function (req, res) {
-    res.render('home');
+    res.render('home',newConfig);
   })
 
   app.get('/about',function (req, res) {
