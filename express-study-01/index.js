@@ -7,8 +7,6 @@
   var credentials = require('./credentials');
   var enrouten = require('express-enrouten');
 
-
-
   var hbs = exphbs.create({
     defaultLayout:'main',
     extname:'.hbs',
@@ -37,16 +35,6 @@
   app.use(enrouten({directory: 'routers'}));
 
 
-
-
-
-  app.get('/newsletter',function (req, res) {
-    res.render('newsletter', { csrf: 'CSRF token goes here'});
-  })
-
-  app.get('/thank-you',function (req,res) {
-    res.render('thanks');
-  })
 
   app.post('/process',function (req, res) {
     console.log('Form (form querystring): ' + req.query.form);
