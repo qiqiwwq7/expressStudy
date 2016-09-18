@@ -1,9 +1,13 @@
   var express = require('express');
   var exphbs = require('express-handlebars');
   var app = express();
+  var path = require('path');
   var bodyParser = require('body-parser');
   var formidable = require('formidable');
   var credentials = require('./credentials');
+  var enrouten = require('express-enrouten');
+
+
 
   var hbs = exphbs.create({
     defaultLayout:'main',
@@ -21,33 +25,20 @@
 
   app.engine('.hbs',hbs.engine);
   app.set('view engine','.hbs');
-
+  app.set('views', path.join(__dirname, 'views'));
   app.set('port',process.env.PORT || 3000);
   app.use(express.static(__dirname + '/public'));
 
   app.use(bodyParser());
   app.use(require('cookie-parser')(credentials.cookieSerect));
 
-  var _config = {
-        GLOBAL: {},
-        sidebar: {
-            links: [],
-            basePath: '',
-            baseUrl: '',
-            path: ''
-        },
-        name:'zhangsan',
-        sex:'man'
-  };
-  var newConfig = Object.create(_config);
-  console.log(newConfig);
-  app.get('/',function (req, res) {
-    res.render('home',newConfig);
-  })
 
-  app.get('/about',function (req, res) {
-    res.render('about');
-  })
+  /// dynamically include routers
+  app.use(enrouten({directory: 'routers'}));
+
+
+
+
 
   app.get('/newsletter',function (req, res) {
     res.render('newsletter', { csrf: 'CSRF token goes here'});
