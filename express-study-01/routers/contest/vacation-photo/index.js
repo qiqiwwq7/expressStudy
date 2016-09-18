@@ -1,5 +1,7 @@
 'use strict';
 
+var formidable = require('formidable');
+
 module.exports = function (router) {
   router.get('/', function (req, res) {
     var now = new Date();
