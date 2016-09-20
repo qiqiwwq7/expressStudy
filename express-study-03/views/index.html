@@ -5,5 +5,14 @@
 </head>
 <body>
   <h1>HelloWorld</h1>
+  <div class="" ng-controller='indexController'>
+      <h1>{{name}}</h1>
+  </div>
+
+  <script type="text/javascript">
+    require(['index/controllers/index'], function (app) {
+      app.init();
+    })
+  </script>
 </body>
 </html>
