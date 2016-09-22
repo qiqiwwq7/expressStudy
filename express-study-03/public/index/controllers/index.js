@@ -5,6 +5,8 @@ define([
   angular.module('index',[])
   .controller('indexController',function ($scope) {
     $scope.name = 'zhangsan';
+
+    angular.element('.remove').html(angular.element('#ee'));
   })
 
   return {

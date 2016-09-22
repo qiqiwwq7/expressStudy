@@ -4,7 +4,7 @@ require.config({
   baseUrl:'/',
   paths:{
     'jquery':'common/jquery/dist/jquery.min',
-    'angular':'common/angular/angular.min'
+    'angular':'common/angular/angular'
   },
   shim:{
     'jquery': {
